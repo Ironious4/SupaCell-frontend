@@ -5,7 +5,7 @@ function Home() {
   const [heros, setHeros] = useState([]);
 
   useEffect(() => {
-    fetch("/heroes")
+    fetch("https://supacell-backend.onrender.com/heroes")
       .then((r) => r.json())
       .then(setHeros);
   }, []);

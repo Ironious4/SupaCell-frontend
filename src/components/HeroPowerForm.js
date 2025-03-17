@@ -37,7 +37,7 @@ function HeroPowerForm() {
       body: JSON.stringify(formData),
     }).then((r) => {
       if (r.ok) {
-        history.push(`https://supacell-backend.onrender.com/heroes/${heroId}`);
+        fetch(`https://supacell-backend.onrender.com/heroes/${heroId}`);
       } else {
         r.json().then((err) => setFormErrors(err.errors));
       }

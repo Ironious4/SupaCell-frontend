@@ -6,9 +6,19 @@ function Home() {
 
   useEffect(() => {
     fetch("https://supacell-backend.onrender.com/heroes")
-      .then((r) => r.json())
-      .then(setHeros);
+      .then((r) => {
+        if (!r.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return r.json();
+      })
+      .then(setHeros)
+      .catch((error) => {
+        console.error('There was a problem with the fetch operation:', error);
+        // Optionally set an error state to display in the UI
+      });
   }, []);
+
 
   return (
     <section>
